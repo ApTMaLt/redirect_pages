@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Открытие Яндекс.Карт</title>
+<script>
+  window.onload = function() {
+    const orgId = new URLSearchParams(window.location.search).get('org') || '156260909260';
+    const yandexAppLink = `yandexmaps://org/${orgId}`;
+    const yandexWebLink = `https://yandex.ru/maps/org/${orgId}/reviews/`;
+
+    const start = Date.now();
+    window.location = yandexAppLink;
+
+    setTimeout(() => {
+      if (Date.now() - start < 1500) {
+        window.location = yandexWebLink;
+      }
+    }, 1200);
+  };
+</script>
+</head>
+<body>
+<p>Открываем Яндекс.Карты…</p>
+</body>
+</html>
