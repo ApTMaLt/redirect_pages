@@ -5,9 +5,14 @@
 <title>Открытие Яндекс.Карт</title>
 <script>
   window.onload = function() {
-    const orgId = new URLSearchParams(window.location.search).get('org') || '156260909260';
-    const yandexAppLink = `yandexmaps://org/${orgId}`;
-    const yandexWebLink = `https://yandex.ru/maps/org/${orgId}/reviews/`;
+    const params = new URLSearchParams(window.location.search);
+    const lat = params.get('lat') || '51.661107';
+    const lon = params.get('lon') || '39.194151';
+    const name = encodeURIComponent(params.get('name') || 'Шоколадница');
+    const zoom = params.get('z') || '17';
+
+    const yandexAppLink = `yandexmaps://maps/?ll=${lon},${lat}&z=${zoom}&text=${name}`;
+    const yandexWebLink = `https://yandex.ru/maps/?ll=${lon},${lat}&z=${zoom}&text=${name}`;
 
     const start = Date.now();
     window.location = yandexAppLink;
